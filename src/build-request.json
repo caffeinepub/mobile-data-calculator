@@ -1,0 +1,113 @@
+{
+  "kind": "build_request",
+  "title": "Android-installable PWA calculator (mobile, calculation-only)",
+  "projectName": "Mobile Data Calculator",
+  "priority": "normal",
+  "requirements": [
+    {
+      "id": "REQ-1",
+      "text": "Make the React app an Android-installable Progressive Web App (PWA) that can be added to the home screen and launches in standalone mode.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-8"
+        ],
+        "quotes": [
+          "It's run android mobile and just calculate the data"
+        ]
+      },
+      "acceptanceCriteria": [
+        "App includes a valid web app manifest with name, short_name, start_url, display=standalone, theme_color, background_color, and icons.",
+        "App registers a service worker so the app shell loads offline after the first successful load.",
+        "On Android Chrome, the app is eligible for “Add to Home screen” and installs/launches as a standalone app."
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "text": "Implement the app as a calculation-only mobile experience: users can enter inputs on-device and immediately see computed outputs without requiring any network calls.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-8"
+        ],
+        "quotes": [
+          "just calculate the data"
+        ]
+      },
+      "acceptanceCriteria": [
+        "All calculations run entirely in the frontend; no backend calls are required to perform calculations.",
+        "Inputs validate and show clear inline error states for invalid/missing values.",
+        "Computed results update immediately when inputs change (or via an explicit Calculate action), and the UI remains usable on small mobile screens."
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "text": "Ensure the app does not depend on live data fetching for core functionality and remains functional when offline.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-8"
+        ],
+        "quotes": [
+          "It's run android mobile and just calculate the data"
+        ]
+      },
+      "acceptanceCriteria": [
+        "With device network disabled, the installed app still opens and the calculator flow works end-to-end.",
+        "Any optional network features (if present) are clearly separated and do not block calculations when offline."
+      ]
+    },
+    {
+      "id": "REQ-4",
+      "text": "Design and apply a coherent mobile-first visual theme (colors, typography, spacing, component styling) appropriate for a focused calculator tool, and use it consistently across the app (avoid blue/purple defaults).",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-8"
+        ]
+      },
+      "acceptanceCriteria": [
+        "UI uses a consistent palette, typography, and spacing scale across all views/components.",
+        "Layout is optimized for mobile (comfortable tap targets, readable sizes, avoids horizontal scrolling)."
+      ]
+    },
+    {
+      "id": "REQ-5",
+      "text": "Add required PWA static assets (icons) under frontend/public/assets/generated and wire them into the manifest so Android uses the correct icons (including a maskable icon variant if supported).",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-2",
+          "msg-8"
+        ],
+        "quotes": [
+          "installable on Android",
+          "It's run android mobile and just calculate the data"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Generated icon files exist under frontend/public/assets/generated and are referenced by the web app manifest.",
+        "Manifest references at least 192x192 and 512x512 icons; includes a maskable icon entry if provided.",
+        "Installed app displays the provided icon on the Android home screen and in the app switcher."
+      ]
+    }
+  ],
+  "constraints": [
+    "Use English for any user-facing text.",
+    "Do not implement a native Android app; deliver as a web PWA installable on Android.",
+    "Do not edit files under frontend/src/components/ui or other immutable paths listed in SYSTEM_CONTEXT; compose them instead."
+  ],
+  "nonGoals": [
+    "Live/streaming market data or any real-time updates.",
+    "Third-party authentication providers (only Internet Identity is supported, but auth is not required for calculation-only mode).",
+    "Server-side persistence or external databases for calculator data."
+  ],
+  "imageRequirements": {
+    "required": [
+      "Minimal calculator app icon (app-icon.dim_512x512.png)",
+      "Minimal calculator app icon (app-icon.dim_192x192.png)",
+      "Minimal maskable calculator app icon (app-icon-maskable.dim_512x512.png)"
+    ],
+    "edits": []
+  }
+}

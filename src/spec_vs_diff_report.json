@@ -1,0 +1,71 @@
+{
+  "kind": "spec_vs_diff_report",
+  "version": "1.0",
+  "generatedAt": "2026-02-18T01:51:05.278Z",
+  "summary": "Diff adds a calculator-focused React page and PWA-related files (manifest + service worker file), plus auth/actor hooks and an empty backend actor. Several PWA/offline and asset requirements are either not evidenced as implemented (service worker registration, required icon files) or cannot be confirmed from the truncated UI code (inline validation/error states).",
+  "missing_requirements": [
+    {
+      "id": "REQ-1",
+      "requirement": "Register a service worker so the app shell loads offline after the first successful load.",
+      "reason": "A service worker file exists (frontend/public/sw.js), but the provided frontend/src/main.tsx content does not show any service worker registration code; without registration the SW will not control the app.",
+      "evidence": [
+        "frontend/public/sw.js",
+        "frontend/src/main.tsx"
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "requirement": "Inputs validate and show clear inline error states for invalid/missing values.",
+      "reason": "CalculatorPage computes results from parseFloat and checks isNaN, but the diff excerpt is truncated and contains no clear evidence of inline validation UI/error states for missing/invalid inputs.",
+      "evidence": [
+        "frontend/src/pages/CalculatorPage.tsx"
+      ]
+    },
+    {
+      "id": "REQ-5",
+      "requirement": "Add required PWA static assets (icons) under frontend/public/assets/generated and wire them into the manifest.",
+      "reason": "The manifest and index.html reference icon files under /assets/generated, but the diff summary does not show the actual image files being added under frontend/public/assets/generated.",
+      "evidence": [
+        "frontend/public/manifest.webmanifest",
+        "frontend/index.html"
+      ]
+    }
+  ],
+  "hallucinated_features": [
+    {
+      "description": "Internet Identity authentication provider and actor creation/react-query wiring (auth + backend actor pattern).",
+      "reason": "BuildRequest explicitly notes auth is not required for calculation-only mode; adding Internet Identity and actor hooks goes beyond requested calculator-only PWA functionality.",
+      "evidence": [
+        "frontend/src/hooks/useInternetIdentity.ts",
+        "frontend/src/hooks/useActor.ts",
+        "frontend/src/main.tsx"
+      ]
+    },
+    {
+      "description": "Added a backend canister/actor file (backend/main.mo) despite calculation-only frontend requirement.",
+      "reason": "REQ-2 emphasizes calculations run entirely in the frontend with no backend calls required; adding an (even empty) backend actor is not requested for this calculation-only PWA.",
+      "evidence": [
+        "backend/main.mo"
+      ]
+    }
+  ],
+  "confidence": 0.74,
+  "changed_files": [
+    "all_files_summary.json",
+    "backend/main.mo",
+    "frontend-file-summaries.txt",
+    "frontend/index.css",
+    "frontend/index.html",
+    "frontend/public/manifest.webmanifest",
+    "frontend/public/sw.js",
+    "frontend/src/App.tsx",
+    "frontend/src/hooks/useActor.ts",
+    "frontend/src/hooks/useInternetIdentity.ts",
+    "frontend/src/index.css",
+    "frontend/src/lib/calculations.ts",
+    "frontend/src/main.tsx",
+    "frontend/src/pages/CalculatorPage.tsx",
+    "frontend/tailwind.config.js",
+    "project_state.json"
+  ]
+}

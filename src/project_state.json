@@ -1,0 +1,71 @@
+{
+  "schemaVersion": "1.0.0",
+  "projectStateVersion": 3,
+  "summary": "Build an Android-installable PWA version of the provided Nifty Options calculator that runs on mobile and focuses on calculation-only functionality.",
+  "architectural_notes": [
+    "Target delivery as a Progressive Web App (PWA) installable on Android (Add to Home Screen)."
+  ],
+  "known_issues": [],
+  "isFixRequest": false,
+  "imageRequirements": "## Required Images\n- Minimal calculator app icon (app-icon.dim_512x512.png)\n- Minimal calculator app icon (app-icon.dim_192x192.png)\n- Minimal maskable calculator app icon (app-icon-maskable.dim_512x512.png)",
+  "existing_features": [
+    {
+      "id": "feature-make-the-react-app-an-android-installable-progressive-web-app-pwa-that-can-be-added-to-the-home-screen-and-launches-in-standalone-mode",
+      "title": "Make the React app an Android-installable Progressive Web App (PWA) that can be added to the home screen and launches in standalone mode.",
+      "reqIds": [
+        "REQ-1"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-implement-the-app-as-a-calculation-only-mobile-experience-users-can-enter-inputs-on-device-and-immediately-see-computed-outputs-without-requiring-any-network-calls",
+      "title": "Implement the app as a calculation-only mobile experience: users can enter inputs on-device and immediately see computed outputs without requiring any network calls.",
+      "reqIds": [
+        "REQ-2"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-ensure-the-app-does-not-depend-on-live-data-fetching-for-core-functionality-and-remains-functional-when-offline",
+      "title": "Ensure the app does not depend on live data fetching for core functionality and remains functional when offline.",
+      "reqIds": [
+        "REQ-3"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-design-and-apply-a-coherent-mobile-first-visual-theme-colors-typography-spacing-component-styling-appropriate-for-a-focused-calculator-tool-and-use-it-consistently-across-the-app-avoid-blue-purple-defaults",
+      "title": "Design and apply a coherent mobile-first visual theme (colors, typography, spacing, component styling) appropriate for a focused calculator tool, and use it consistently across the app (avoid blue/purple defaults).",
+      "reqIds": [
+        "REQ-4"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-required-pwa-static-assets-icons-under-frontend-public-assets-generated-and-wire-them-into-the-manifest-so-android-uses-the-correct-icons-including-a-maskable-icon-variant-if-supported",
+      "title": "Add required PWA static assets (icons) under frontend/public/assets/generated and wire them into the manifest so Android uses the correct icons (including a maskable icon variant if supported).",
+      "reqIds": [
+        "REQ-5"
+      ],
+      "version": 1
+    }
+  ],
+  "new_feature_requests": [
+    {
+      "id": "AR-1",
+      "summary": "Convert provided HTML/CSS/JS into an Android-installable PWA (Add to Home Screen)",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-2",
+      "summary": "Implement calculation-only mode for mobile (no live data fetch required)",
+      "reqIds": [],
+      "status": "pending"
+    }
+  ],
+  "gameProjectType": "none",
+  "projectName": "Mobile Data Calculator",
+  "clarification_mode": "instant",
+  "clarification_rounds": 0
+}

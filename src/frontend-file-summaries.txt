@@ -1,0 +1,11 @@
+{
+  "frontend/src/App.tsx": "Main app component that renders the CalculatorPage as the single view without routing or authentication.",
+  "frontend/src/pages/CalculatorPage.tsx": "Complete calculator UI implementing the Nifty Options Panic Strategy calculator with real-time calculations, input fields for market data and premiums, signal detection, and trade management display.",
+  "frontend/src/lib/calculations.ts": "Pure calculation functions for round number, strike prices, panic price, and trade management (stop loss/target) with TypeScript interfaces for inputs and results.",
+  "frontend/src/index.css": "Global styles with dark tech-themed OKLCH color system (cyan accent, green/red for bull/bear), custom fonts (Rajdhani, Share Tech Mono, Orbitron), and grid background pattern.",
+  "frontend/index.html": "HTML entry point with PWA meta tags, manifest link, theme color, viewport settings, and Google Fonts preload for the calculator fonts.",
+  "frontend/public/manifest.webmanifest": "PWA manifest defining app name, icons, display mode (standalone), theme colors, and orientation for Android installation.",
+  "frontend/public/sw.js": "Service worker implementing cache-first strategy for app shell and runtime caching for static assets to enable offline functionality.",
+  "frontend/src/main.tsx": "Application entry point that sets up React Query provider, renders the App component, and registers the service worker for PWA capabilities.",
+  "frontend/tailwind.config.js": "Tailwind configuration extended with custom color tokens (success, warning), custom font families (Rajdhani, Share Tech Mono, Orbitron), and consistent design system."
+}

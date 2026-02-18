@@ -1,0 +1,104 @@
+{
+  "kind": "feature_evidence_report",
+  "features": [
+    {
+      "featureId": "feature-make-the-react-app-an-android-installable-progressive-web-app-pwa-that-can-be-added-to-the-home-screen-and-launches-in-standalone-mode",
+      "featureTitle": "Make the React app an Android-installable Progressive Web App (PWA) that can be added to the home screen and launches in standalone mode.",
+      "files": [
+        "frontend/index.html",
+        "frontend/public/manifest.webmanifest",
+        "frontend/public/sw.js",
+        "frontend/src/main.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-1"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-implement-the-app-as-a-calculation-only-mobile-experience-users-can-enter-inputs-on-device-and-immediately-see-computed-outputs-without-requiring-any-network-calls",
+      "featureTitle": "Implement the app as a calculation-only mobile experience: users can enter inputs on-device and immediately see computed outputs without requiring any network calls.",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/lib/calculations.ts",
+        "frontend/src/main.tsx",
+        "frontend/src/pages/CalculatorPage.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-2"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-ensure-the-app-does-not-depend-on-live-data-fetching-for-core-functionality-and-remains-functional-when-offline",
+      "featureTitle": "Ensure the app does not depend on live data fetching for core functionality and remains functional when offline.",
+      "files": [
+        "frontend/public/sw.js",
+        "frontend/src/pages/CalculatorPage.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-3"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-design-and-apply-a-coherent-mobile-first-visual-theme-colors-typography-spacing-component-styling-appropriate-for-a-focused-calculator-tool-and-use-it-consistently-across-the-app-avoid-blue-purple-defaults",
+      "featureTitle": "Design and apply a coherent mobile-first visual theme (colors, typography, spacing, component styling) appropriate for a focused calculator tool, and use it consistently across the app (avoid blue/purple defaults).",
+      "files": [
+        "frontend/src/index.css",
+        "frontend/src/pages/CalculatorPage.tsx",
+        "frontend/tailwind.config.js"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-4"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-add-required-pwa-static-assets-icons-under-frontend-public-assets-generated-and-wire-them-into-the-manifest-so-android-uses-the-correct-icons-including-a-maskable-icon-variant-if-supported",
+      "featureTitle": "Add required PWA static assets (icons) under frontend/public/assets/generated and wire them into the manifest so Android uses the correct icons (including a maskable icon variant if supported).",
+      "files": [
+        "frontend/public/manifest.webmanifest"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-5"
+      ],
+      "confidence": "high"
+    }
+  ]
+}

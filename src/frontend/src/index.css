@@ -1,0 +1,107 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    :root {
+        --radius: 0.75rem;
+        
+        /* Dark tech theme - inspired by trading terminals */
+        --background: 0.08 0 0;
+        --foreground: 0.95 0 0;
+        --card: 0.12 0 0;
+        --card-foreground: 0.95 0 0;
+        --popover: 0.12 0 0;
+        --popover-foreground: 0.95 0 0;
+        
+        /* Cyan accent for tech feel */
+        --primary: 0.65 0.18 195;
+        --primary-foreground: 0.08 0 0;
+        
+        --secondary: 0.20 0 0;
+        --secondary-foreground: 0.95 0 0;
+        
+        --muted: 0.20 0 0;
+        --muted-foreground: 0.55 0 0;
+        
+        /* Cyan accent */
+        --accent: 0.70 0.15 195;
+        --accent-foreground: 0.08 0 0;
+        
+        /* Red for bearish */
+        --destructive: 0.60 0.22 25;
+        --destructive-foreground: 0.95 0 0;
+        
+        /* Green for bullish */
+        --success: 0.65 0.20 145;
+        
+        /* Gold/amber for warnings */
+        --warning: 0.75 0.18 75;
+        
+        --border: 0.25 0 0;
+        --input: 0.25 0 0;
+        --ring: 0.70 0.15 195;
+        
+        --chart-1: 0.65 0.20 145;
+        --chart-2: 0.70 0.15 195;
+        --chart-3: 0.60 0.22 25;
+        --chart-4: 0.75 0.18 75;
+        --chart-5: 0.55 0.18 280;
+    }
+
+    .dark {
+        --background: 0.08 0 0;
+        --foreground: 0.95 0 0;
+        --card: 0.12 0 0;
+        --card-foreground: 0.95 0 0;
+        --popover: 0.15 0 0;
+        --popover-foreground: 0.95 0 0;
+        --primary: 0.65 0.18 195;
+        --primary-foreground: 0.08 0 0;
+        --secondary: 0.20 0 0;
+        --secondary-foreground: 0.95 0 0;
+        --muted: 0.20 0 0;
+        --muted-foreground: 0.55 0 0;
+        --accent: 0.70 0.15 195;
+        --accent-foreground: 0.08 0 0;
+        --destructive: 0.60 0.22 25;
+        --destructive-foreground: 0.95 0 0;
+        --success: 0.65 0.20 145;
+        --warning: 0.75 0.18 75;
+        --border: 0.25 0 0;
+        --input: 0.25 0 0;
+        --ring: 0.70 0.15 195;
+    }
+
+    * {
+        @apply border-border;
+    }
+    
+    body {
+        @apply bg-background text-foreground;
+        font-family: 'Rajdhani', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    }
+    
+    input[type="number"]::-webkit-inner-spin-button,
+    input[type="number"]::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+    
+    input[type="number"] {
+        -moz-appearance: textfield;
+    }
+}
+
+@layer utilities {
+    .bg-grid-pattern {
+        background-image:
+            linear-gradient(rgba(0, 212, 255, 0.03) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(0, 212, 255, 0.03) 1px, transparent 1px);
+        background-size: 40px 40px;
+    }
+    
+    .font-mono {
+        font-family: 'Share Tech Mono', 'Courier New', monospace;
+    }
+}

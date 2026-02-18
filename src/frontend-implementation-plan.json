@@ -1,0 +1,145 @@
+{
+  "kind": "implementation_plan",
+  "version": "1.0",
+  "title": "Android-installable PWA calculator (mobile, calculation-only)",
+  "requirements": [
+    {
+      "id": "REQ-1",
+      "summary": "Make the React app Android-installable as a standalone PWA with manifest + service worker registration.",
+      "acceptanceCriteria": [
+        "App includes a valid web app manifest with name, short_name, start_url, display=standalone, theme_color, background_color, and icons.",
+        "App registers a service worker so the app shell loads offline after the first successful load.",
+        "On Android Chrome, the app is eligible for “Add to Home screen” and installs/launches as a standalone app."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/public/manifest.webmanifest",
+          "operation": "create",
+          "description": "Create a valid web app manifest for the calculator PWA (name, short_name, start_url, display=standalone, theme_color, background_color) and reference the required icons under frontend/public/assets/generated."
+        },
+        {
+          "path": "frontend/public/sw.js",
+          "operation": "create",
+          "description": "Add a service worker that caches the app shell and same-origin static requests after first load so the app can open and run offline."
+        },
+        {
+          "path": "frontend/src/main.tsx",
+          "operation": "modify",
+          "description": "Register the service worker (when supported) so the PWA can load offline after the first successful load; keep registration non-blocking to avoid impacting first render."
+        },
+        {
+          "path": "frontend/index.html",
+          "operation": "modify",
+          "description": "Wire the PWA manifest into the document head (link rel=manifest) and add appropriate PWA meta tags (including theme-color) so Android Chrome can detect installability."
+        }
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "summary": "Implement a calculation-only, mobile-first calculator flow with on-device validation and immediate computed outputs.",
+      "acceptanceCriteria": [
+        "All calculations run entirely in the frontend; no backend calls are required to perform calculations.",
+        "Inputs validate and show clear inline error states for invalid/missing values.",
+        "Computed results update immediately when inputs change (or via an explicit Calculate action), and the UI remains usable on small mobile screens."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "create",
+          "description": "Create the app shell that renders a single calculator-focused view (no auth required) and ensures all user-facing text is in English."
+        },
+        {
+          "path": "frontend/src/pages/CalculatorPage.tsx",
+          "operation": "create",
+          "description": "Implement the calculator UI and logic (pure frontend computation) with mobile-friendly layout, inline validation/error states, and immediate result updates. Use shadcn-ui components (e.g., inputs/buttons/cards) for consistent styling and accessibility; verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/lib/calculations.ts",
+          "operation": "create",
+          "description": "Add pure calculation and validation helpers (no network usage) that the UI can call to compute outputs deterministically from inputs."
+        },
+        {
+          "path": "frontend/src/main.tsx",
+          "operation": "modify",
+          "description": "Remove/avoid any providers or initialization that are not required for calculation-only mode (e.g., authentication wrappers) so the app can run fully offline and without backend calls."
+        }
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "summary": "Ensure core functionality has no live data dependency and remains fully usable offline.",
+      "acceptanceCriteria": [
+        "With device network disabled, the installed app still opens and the calculator flow works end-to-end.",
+        "Any optional network features (if present) are clearly separated and do not block calculations when offline."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/public/sw.js",
+          "operation": "modify",
+          "description": "Ensure the service worker caching strategy supports offline app launch and calculator usage end-to-end (cache-first for navigation/app shell; runtime caching for same-origin static assets after first load)."
+        },
+        {
+          "path": "frontend/src/pages/CalculatorPage.tsx",
+          "operation": "modify",
+          "description": "Ensure the calculator view has zero dependency on network calls for computation; if any optional network-related UI exists, gate it behind clear offline-safe fallbacks so it never blocks calculations."
+        }
+      ]
+    },
+    {
+      "id": "REQ-4",
+      "summary": "Apply a coherent mobile-first visual theme (non-blue/purple defaults) consistently across the calculator app.",
+      "acceptanceCriteria": [
+        "UI uses a consistent palette, typography, and spacing scale across all views/components.",
+        "Layout is optimized for mobile (comfortable tap targets, readable sizes, avoids horizontal scrolling)."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/index.css",
+          "operation": "create",
+          "description": "Create global theme styles using Tailwind + CSS variables to establish a coherent calculator-focused palette (avoid blue/purple defaults), typography, spacing, and consistent component styling."
+        },
+        {
+          "path": "frontend/tailwind.config.js",
+          "operation": "modify",
+          "description": "Adjust Tailwind theme tokens (as needed) to align with the new mobile-first visual theme and ensure consistent colors/typography across the app."
+        },
+        {
+          "path": "frontend/src/pages/CalculatorPage.tsx",
+          "operation": "modify",
+          "description": "Apply the theme consistently in the calculator layout (mobile-first spacing, readable type, large tap targets). Use shadcn-ui components where appropriate to maintain consistent styling; verify the component's usage instructions before implementing."
+        }
+      ]
+    },
+    {
+      "id": "REQ-5",
+      "summary": "Add required PWA icons under frontend/public/assets/generated and wire them into the manifest (including maskable).",
+      "acceptanceCriteria": [
+        "Generated icon files exist under frontend/public/assets/generated and are referenced by the web app manifest.",
+        "Manifest references at least 192x192 and 512x512 icons; includes a maskable icon entry if provided.",
+        "Installed app displays the provided icon on the Android home screen and in the app switcher."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/public/assets/generated/app-icon.dim_512x512.png",
+          "operation": "create",
+          "description": "Add the generated PWA icon asset at frontend/public/assets/generated/app-icon.dim_512x512.png and ensure it is suitable for Android home screen and app switcher usage."
+        },
+        {
+          "path": "frontend/public/assets/generated/app-icon.dim_192x192.png",
+          "operation": "create",
+          "description": "Add the generated PWA icon asset at frontend/public/assets/generated/app-icon.dim_192x192.png for Android install eligibility."
+        },
+        {
+          "path": "frontend/public/assets/generated/app-icon-maskable.dim_512x512.png",
+          "operation": "create",
+          "description": "Add the generated maskable PWA icon asset at frontend/public/assets/generated/app-icon-maskable.dim_512x512.png for Android adaptive icon support."
+        },
+        {
+          "path": "frontend/public/manifest.webmanifest",
+          "operation": "modify",
+          "description": "Reference the generated icon assets in the manifest, including at least 192x192 and 512x512 sizes and a maskable icon entry pointing to frontend/public/assets/generated/app-icon-maskable.dim_512x512.png."
+        }
+      ]
+    }
+  ]
+}

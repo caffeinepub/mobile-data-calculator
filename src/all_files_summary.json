@@ -1,0 +1,18 @@
+{
+  "backend/main.mo": "Empty Motoko actor with no methods.",
+  "feature_evidence.json": "Feature evidence report mapping features to related files, components, tests, and confidence.",
+  "frontend-file-summaries.txt": "Prewritten summaries describing the purpose of key frontend files.",
+  "frontend/index.css": "Global Tailwind-based dark tech theme with custom color variables, fonts, and utility classes.",
+  "frontend/index.html": "Main HTML entry configuring PWA metadata, manifest, icons, fonts, and root mount point.",
+  "frontend/public/manifest.webmanifest": "PWA manifest defining name, start URL, theme, and icons including maskable variants.",
+  "frontend/public/sw.js": "Service worker implementing cache-first strategy for app shell and offline support.",
+  "frontend/src/App.tsx": "Simple wrapper rendering CalculatorPage as the app’s main view.",
+  "frontend/src/hooks/useActor.ts": "React hook creating and managing a backend actor tied to Internet Identity state.",
+  "frontend/src/hooks/useInternetIdentity.ts": "Authentication context and hooks for managing Internet Identity login and stored identities.",
+  "frontend/src/index.css": "Dark, tech‑styled theme with OKLCH colors, custom fonts, and grid utilities for the UI.",
+  "frontend/src/lib/calculations.ts": "Pure functions computing strikes, panic price, round numbers, and trade management values.",
+  "frontend/src/main.tsx": "App entry that sets up React Query, Internet Identity provider, and mounts the React app.",
+  "frontend/src/pages/CalculatorPage.tsx": "React page that manages calculator inputs, computes option-related results using helper functions, and displays a trading signal based on premiums.",
+  "frontend/tailwind.config.js": "Tailwind configuration extending theme colors, fonts, animations, and enabling typography, container queries, and animation plugins.",
+  "project_state.json": "Project state file describing goals for an Android-installable PWA calculator app, required assets, features, and pending requests."
+}
